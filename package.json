@@ -1,0 +1,33 @@
+{
+  "name": "backend-server",
+  "version": "1.0.0",
+  "description": "Esse repositório é um exemplo de aplicação \"backend\" usando Express, ORM, PostgreSQL e JWT.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src",
+    "dev": "nodemon ./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OHomemParede/Backend-Server.git"
+  },
+  "keywords": [],
+  "author": "Daniel de Souza Lima Junior",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OHomemParede/Backend-Server/issues"
+  },
+  "homepage": "https://github.com/OHomemParede/Backend-Server#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.7.1",
+    "sequelize": "^6.6.5"
+  }
+}
