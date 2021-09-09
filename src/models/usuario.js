@@ -2,7 +2,6 @@ const Sequelize = require("sequelize");
 const bcrypt = require("bcrypt");
 const database = require("../database");
 
-
 const Usuario = database.define(
     "usuario",
     {
@@ -30,7 +29,7 @@ const Usuario = database.define(
             type: Sequelize.STRING,
             allowNull: false,
             validate: {
-                len(senha, next){
+                len(senha, next) {
                     if (senha.length < 6)
                         return next("A senha deve ter pelo menos 6 caracteres");
                     return next();
@@ -44,10 +43,10 @@ const Usuario = database.define(
             validate: {
                 isIn: {
                     args: [["admin", "user"]],
-                    msg: "Perfil desconhecido"
-                }
-            }
-        }
+                    msg: "Perfil desconhecido",
+                },
+            },
+        },
     },
 
     {
@@ -60,9 +59,12 @@ const Usuario = database.define(
                     bcrypt.genSaltSync(10)
                 );
             },
-            beforeUpdate: (usuario, options) => {
+            beforeUpdate: (usuario) => {
                 // beforeUpdate é chamado sempre ao atualizar, então é preciso saber se é para atualizar a senha
-                if (usuario.senha)
+                if (
+                    usuario._previousDataValues.senha !==
+                    usuario.dataValues.senha
+                )
                     usuario.senha = bcrypt.hashSync(
                         usuario.senha,
                         bcrypt.genSaltSync(10)
@@ -75,7 +77,5 @@ const Usuario = database.define(
 Usuario.prototype.comparePassword = (senha, hash) => {
     return bcrypt.compareSync(senha, hash);
 };
-
-
 
 module.exports = Usuario;

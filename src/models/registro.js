@@ -12,7 +12,7 @@ const Registro = database.define(
             primaryKey: true,
             
         },
-        date: {
+        data: {
             type: Sequelize.DATE,
             allowNull: false,
         }

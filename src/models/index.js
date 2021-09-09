@@ -3,7 +3,6 @@ const UsuarioModel = require("./usuario");
 const RegistroModel = require("./registro");
 const VacinaModel = require("./vacina");
 
-
 // um usuario possui varios registros
 UsuarioModel.hasMany(RegistroModel, {
     foreignKey: {
@@ -15,9 +14,15 @@ UsuarioModel.hasMany(RegistroModel, {
     onUpdate: "cascade",
     hooks: true,
 });
+RegistroModel.belongsTo(UsuarioModel, {
+    foreignKey: "idusuario",
+    targetKey: "idusuario",
+});
+
+
 
 // uma vacina somente tem um registro
-VacinaModel.hasOne(RegistroModel, {
+VacinaModel.hasMany(RegistroModel, {
     foreignKey: {
         name: "idvacina",
         allowNull: false,
@@ -27,6 +32,10 @@ VacinaModel.hasOne(RegistroModel, {
     onUpdate: "cascade",
     hooks: true,
 });
+RegistroModel.belongsTo(VacinaModel, {
+    foreignKey: "idvacina",
+    targetKey: "idvacina",
+})
 
 
 //cria as tabelas no SGBD se elas não existirem
