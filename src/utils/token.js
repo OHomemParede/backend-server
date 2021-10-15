@@ -3,7 +3,7 @@ require("dotenv").config();
 
 class Token {
     async generateToken(user) {
-        return JWT.sign(user, process.env.JWT_SECRET);
+        return JWT.sign(user, process.env.JWT_SECRET, {expiresIn: 1800});
     }
 
     async validateToken(token) {
