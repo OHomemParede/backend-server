@@ -1,13 +1,18 @@
 const JWT = require("jsonwebtoken");
-require("dotenv").config();
+
+const secret = process.env.JWT_SECRET
 
 class Token {
     async generateToken(user) {
-        return JWT.sign(user, process.env.JWT_SECRET, {expiresIn: 1800});
+        return JWT.sign(
+            user,
+            secret,
+            { expiresIn: "1hr" }
+        );
     }
 
     async validateToken(token) {
-        return JWT.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+        return JWT.verify(token, secret, (err, decoded) => {
             if (err)
                 throw new Error(
                     "Problemas para validar os dados de acesso (Token)"

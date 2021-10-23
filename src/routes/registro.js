@@ -4,6 +4,7 @@ const middleware = require("../middlewares");
 const { create, listaregistro, updatedata, updateidvacina, deleteregistro } = new RegistroController();
 
 
+// login is required
 router.use(middleware.authToken);
 
 router.post("/create", middleware.createRegistro, create);

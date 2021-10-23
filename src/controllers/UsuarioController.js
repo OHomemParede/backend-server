@@ -6,7 +6,7 @@ class UsuarioController {
     async create(req, res) {
         const { mail, senha } = req.body;
 
-        return await UsuarioModel.create({ mail, senha, perfil: "admin" })
+        return await UsuarioModel.create({ mail, senha, perfil: "user" })
             .then(async (r) => {
                 const { idusuario, mail, perfil } = r.get();
                 return res.status(200).json({ idusuario, mail, perfil });
