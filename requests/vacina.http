@@ -1,0 +1,44 @@
+@host = http://localhost
+@port = 3100
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHVzdWFyaW8iOjEsIm1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2MzQ4MzMyODcsImV4cCI6MTYzNDgzNjg4N30.3gBR1RSmgNJBA5Q4AKS6YbWuAnaSOJbpykQ1ewMil0I
+
+
+### Create
+POST {{host}}:{{port}}/api/vacina/create
+content-type: application/json
+authorization: type {{token}} 
+
+{
+"nome": "Vacina A"
+}
+
+
+
+### Update nome
+PUT {{host}}:{{port}}/api/vacina/update/nome
+content-type: application/json
+authorization: type {{token}} 
+
+{
+"idvacina": 5,
+"nome": "Vacina E"
+}
+
+
+
+
+### Delete
+DELETE {{host}}:{{port}}/api/vacina/delete
+content-type: application/json
+authorization: type {{token}} 
+
+{
+"idvacina": "1"
+}
+
+
+
+
+### Lista
+GET {{host}}:{{port}}/api/vacina/lista
+authorization: type {{token}} 

@@ -1,0 +1,59 @@
+@host = http://localhost
+@port = 3100
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHVzdWFyaW8iOjEsIm1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2MzQ4MzMyODcsImV4cCI6MTYzNDgzNjg4N30.3gBR1RSmgNJBA5Q4AKS6YbWuAnaSOJbpykQ1ewMil0I
+
+
+### Create
+POST {{host}}:{{port}}/api/registro/create
+content-type: application/json
+authorization: type {{token}} 
+
+{
+"idusuario": 1,
+"idvacina": 2,
+"data": "2021-10-21"
+}
+
+
+
+### Lista
+GET {{host}}:{{port}}/api/registro/lista
+authorization: type {{token}} 
+
+
+
+### Update data
+PUT {{host}}:{{port}}/api/registro/update/data
+authorization: type {{token}} 
+content-type: application/json
+
+{
+"idregistro": 1,
+"data": "2021-10-19"
+}
+
+
+
+
+### Update idvacina
+PUT {{host}}:{{port}}/api/registro/update/idvacina
+authorization: type {{token}} 
+content-type: application/json
+
+{
+"idregistro": 1,
+"idvacina": 3
+}
+
+
+
+
+### Delete
+DELETE  {{host}}:{{port}}/api/registro/delete
+authorization: type {{token}} 
+content-type: application/json
+
+{
+"idregistro": 1,
+"idvacina": 1
+}

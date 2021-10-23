@@ -1,0 +1,73 @@
+@host = http://localhost
+@port = 3100
+
+
+
+
+###============== Create ==============
+POST {{host}}:{{port}}/api/usuario/create
+content-type: application/json
+
+{
+"mail": "admin@admin.com",
+"senha": "123456"
+}
+
+
+
+
+###============== Login ==============
+GET {{host}}:{{port}}/api/usuario/login
+content-type: application/json
+
+{
+"mail": "admin@admin.com",
+"senha": "123456"
+}
+
+
+
+
+###===================================
+### From now on you should have a token
+### Token from user02
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHVzdWFyaW8iOjMsIm1haWwiOiJ1c2VyMDJAdXNlcjAyLmNvbSIsImlhdCI6MTYzNDc2NDM3OCwiZXhwIjoxNjM0NzY2MTc4fQ.5v5ew0q4XveaGtHnGyOZZujoIt_EydffeR2Z-i4X5fo
+
+
+###============== Update mail ==============
+PUT {{host}}:{{port}}/api/usuario/update/mail
+content-type: application/json
+authorization: type {{token}}
+
+{
+"mail": "user02@user.com"
+}
+
+
+
+
+###============== Update senha ==============
+PUT {{host}}:{{port}}/api/usuario/update/senha
+content-type: application/json
+authorization: type {{token}}
+
+{
+"senha": "user123"
+}
+
+
+
+###=====================================
+### You must an admin token to run this.
+@admin_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHVzdWFyaW8iOjEsIm1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2MzQ3NjQ4MzMsImV4cCI6MTYzNDc2NjYzM30.j-mUQkHUpTYYggQ_P6AXFiG6pastwIeZa6kMkel_XnU
+
+
+###============== Update perfil ==============
+PUT {{host}}:{{port}}/api/usuario/update/perfil
+content-type: application/json
+authorization: type {{admin_token}}
+
+{
+"idusuario": "3",
+"perfil": "admin"
+}
