@@ -14,9 +14,7 @@ class Token {
     async validateToken(token) {
         return JWT.verify(token, secret, (err, decoded) => {
             if (err)
-                throw new Error(
-                    "Problemas para validar os dados de acesso (Token)"
-                );
+                return err
             else return decoded;
         });
     }

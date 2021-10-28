@@ -1,0 +1,7 @@
+### Validate token
+POST http://localhost:3100/api/token/auth
+content-type: application/json
+
+{
+"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHVzdWFyaW8iOjEsIm1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2MzUxMDUyMDksImV4cCI6MTYzNTEwODgwOX0.ayUBtp2NOx-UxgxYI4dmPPq6fk7vYMLO4lEYwNsS524"
+}

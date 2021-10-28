@@ -2,13 +2,14 @@ const router = require("express").Router();
 const { UsuarioController } = require("../controllers");
 const middleware = require("../middlewares");
 
-const { create, login, updatemail, updatesenha, updateperfil } = new UsuarioController();
+const { create, login, lista, updatemail, updatesenha, updateperfil } = new UsuarioController();
 
 
 router.post("/create", middleware.createUsuario, create);
 
-router.get("/login", middleware.loginUsuario, login);
+router.post("/login", middleware.loginUsuario, login);
 
+router.get("/lista",middleware.authToken, middleware.authAdminUsuario, lista)
 
 // usuario deve está logado (deve ter um token valido)
 router.use(middleware.authToken);

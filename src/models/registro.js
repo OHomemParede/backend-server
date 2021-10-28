@@ -13,7 +13,7 @@ const Registro = database.define(
             
         },
         data: {
-            type: Sequelize.DATE,
+            type: Sequelize.DATEONLY,
             allowNull: false,
         }
     },

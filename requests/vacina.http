@@ -1,6 +1,6 @@
 @host = http://localhost
 @port = 3100
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHVzdWFyaW8iOjEsIm1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2MzQ4MzMyODcsImV4cCI6MTYzNDgzNjg4N30.3gBR1RSmgNJBA5Q4AKS6YbWuAnaSOJbpykQ1ewMil0I
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHVzdWFyaW8iOjEsIm1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJwZXJmaWwiOiJhZG1pbiIsImlhdCI6MTYzNTQyMTU3NywiZXhwIjoxNjM1NDI1MTc3fQ.vXjMRU_SMBSVwb_7--JkzTWesxwjL1jVzfN5pM6YyEI
 
 
 ### Create
@@ -9,7 +9,7 @@ content-type: application/json
 authorization: type {{token}} 
 
 {
-"nome": "Vacina A"
+"nome": "Vacina B3"
 }
 
 
@@ -28,13 +28,8 @@ authorization: type {{token}}
 
 
 ### Delete
-DELETE {{host}}:{{port}}/api/vacina/delete
-content-type: application/json
+DELETE {{host}}:{{port}}/api/vacina/delete/14
 authorization: type {{token}} 
-
-{
-"idvacina": "1"
-}
 
 
 

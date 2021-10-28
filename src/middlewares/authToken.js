@@ -16,7 +16,7 @@ const authToken = async (req, res, next) => {
         await Token.validateToken(token);
         return next();
     } catch (error) {
-        return res.status(401).json({ error: [error.message] });
+        return res.status(401).json({ error: error.message });
     }
 };
 

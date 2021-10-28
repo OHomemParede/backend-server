@@ -1,6 +1,6 @@
 @host = http://localhost
 @port = 3100
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHVzdWFyaW8iOjEsIm1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE2MzQ4MzMyODcsImV4cCI6MTYzNDgzNjg4N30.3gBR1RSmgNJBA5Q4AKS6YbWuAnaSOJbpykQ1ewMil0I
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHVzdWFyaW8iOjEsIm1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJwZXJmaWwiOiJhZG1pbiIsImlhdCI6MTYzNTQyMTU3NywiZXhwIjoxNjM1NDI1MTc3fQ.vXjMRU_SMBSVwb_7--JkzTWesxwjL1jVzfN5pM6YyEI
 
 
 ### Create
@@ -9,9 +9,8 @@ content-type: application/json
 authorization: type {{token}} 
 
 {
-"idusuario": 1,
-"idvacina": 2,
-"data": "2021-10-21"
+"idvacina": 3,
+"data": "2020-01-23"
 }
 
 
@@ -28,7 +27,8 @@ authorization: type {{token}}
 content-type: application/json
 
 {
-"idregistro": 1,
+"idusuario": 2,
+"idregistro": 22,
 "data": "2021-10-19"
 }
 
@@ -41,19 +41,13 @@ authorization: type {{token}}
 content-type: application/json
 
 {
-"idregistro": 1,
-"idvacina": 3
+"idregistro": 9,
+"idvacina": 1
 }
 
 
 
 
 ### Delete
-DELETE  {{host}}:{{port}}/api/registro/delete
+DELETE  {{host}}:{{port}}/api/registro/delete/23
 authorization: type {{token}} 
-content-type: application/json
-
-{
-"idregistro": 1,
-"idvacina": 1
-}

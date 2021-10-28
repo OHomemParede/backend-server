@@ -9,7 +9,7 @@ POST {{host}}:{{port}}/api/usuario/create
 content-type: application/json
 
 {
-"mail": "admin@admin.com",
+"mail": "user01@mail.com",
 "senha": "123456"
 }
 
@@ -17,7 +17,7 @@ content-type: application/json
 
 
 ###============== Login ==============
-GET {{host}}:{{port}}/api/usuario/login
+POST {{host}}:{{port}}/api/usuario/login
 content-type: application/json
 
 {
@@ -31,16 +31,16 @@ content-type: application/json
 ###===================================
 ### From now on you should have a token
 ### Token from user02
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHVzdWFyaW8iOjMsIm1haWwiOiJ1c2VyMDJAdXNlcjAyLmNvbSIsImlhdCI6MTYzNDc2NDM3OCwiZXhwIjoxNjM0NzY2MTc4fQ.5v5ew0q4XveaGtHnGyOZZujoIt_EydffeR2Z-i4X5fo
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHVzdWFyaW8iOjIsIm1haWwiOiJkZUBnLmNvbSIsImlhdCI6MTYzNTI3MjA5MywiZXhwIjoxNjM1Mjc1NjkzfQ.I1-DfJbNf1LbfbHoXTsRYGqMj4f9u6Ob-5TrovXQ7R4
 
 
 ###============== Update mail ==============
 PUT {{host}}:{{port}}/api/usuario/update/mail
 content-type: application/json
-authorization: type {{token}}
+Authorization: type {{token}}
 
 {
-"mail": "user02@user.com"
+"mail": "user01@user.com"
 }
 
 
@@ -71,3 +71,9 @@ authorization: type {{admin_token}}
 "idusuario": "3",
 "perfil": "admin"
 }
+
+
+### YOU MUST BE ADMIN
+###============== Lista Users ==============
+GET {{host}}:{{port}}/api/usuario/lista
+authorization: type {{admin_token}}

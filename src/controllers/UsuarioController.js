@@ -2,6 +2,26 @@ const { UsuarioModel } = require("../models");
 const Token = require("../utils");
 
 class UsuarioController {
+    // ============================= Lista =============================
+    async lista(req, res) {
+
+        return await UsuarioModel.findAll()
+            .then(async (r) => {
+                const newR = r.map(item=>{
+                    return {
+                        idusuario: item.idusuario,
+                        mail: item.mail,
+                        perfil: item.perfil
+                    }
+                }) 
+                return res.status(200).json(newR);
+            })
+            .catch((err) => {
+                return res.status(400).json({ error: err.message });
+            });
+    }
+
+
     // ============================= Create =============================
     async create(req, res) {
         const { mail, senha } = req.body;
@@ -27,11 +47,13 @@ class UsuarioController {
                         const token = await Token.generateToken({
                             idusuario: usuario.idusuario,
                             mail: usuario.mail,
+                            perfil: usuario.perfil
                         });
                         return res.json({
                             token,
                             idusuario: usuario.idusuario,
                             mail: usuario.mail,
+                            perfil: usuario.perfil
                         });
                     } else
                         return res
@@ -78,7 +100,7 @@ class UsuarioController {
     async updatesenha(req, res) {
         const token = await Token.getToken(req);
         const idusuario = token.idusuario;
-        
+
         const { senha } = req.body;
         return await UsuarioModel.findOne({
             where: { idusuario },

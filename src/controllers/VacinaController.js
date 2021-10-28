@@ -40,7 +40,7 @@ class VacinaController {
 
     // ============================= Delete Vacina =============================
     async deletevacina(req, res) {
-        const { idvacina } = req.body;
+        const { idvacina } = req.params;
         return await VacinaModel.destroy({
             where: { idvacina },
         })

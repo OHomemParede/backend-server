@@ -14,7 +14,7 @@ router.get("/lista", listaregistro);
 router.put("/update/data", middleware.updateDataRegistro, updatedata);
 router.put("/update/idvacina", middleware.updateIdvacinaRegistro, updateidvacina);
 
-router.delete("/delete", middleware.deleteRegistro, deleteregistro);
+router.delete("/delete/:idregistro", middleware.deleteRegistro, deleteregistro);
 
 
 module.exports = router;
